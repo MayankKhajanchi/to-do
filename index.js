@@ -19,6 +19,8 @@ function populate() {
         <p class="card-text">${item.description}</p>
       </div>
     </div>
+    <div class="clear"><i class="fas fa-times"></i></div>
+    <div class="edit"><i class="fas fa-pencil-alt"></i></div>
   </div>`)
   })
 }
