@@ -7,33 +7,32 @@ body {
   column-count: 4;
   font-family: 'Ubuntu', sans-serif;
 }
-.clear,
-    .edit {
-      display: none;
-      position: absolute;
-      top: 0;
-    }
+.clear,.edit {
+  display: none;
+  position: absolute;
+  top: 0;
+}
 
-    .clear {
-      right: 8px;
-      font-size: 16px;
-    }
+.clear {
+  right: 8px;
+  font-size: 16px;
+}
 
-    .edit {
-      right: 30px;
-      top: 1px;
-      font-size: 14px;
-    }
+.edit {
+  right: 30px;
+  top: 1px;
+  font-size: 14px;
+}
 
-    .clear {
-      color: red;
-    }
+.clear {
+  color: red;
+}
 
-    .edit {
-      color: green
-    }
+.edit {
+  color: green
+}
 
-    .card:hover .clear,
-    .card:hover .edit {
-      display: block;
-    }
+.card:hover .clear,
+.card:hover .edit {
+  display: block;
+}

@@ -19,8 +19,8 @@ function populate() {
         <p class="card-text">${item.description}</p>
       </div>
     </div>
-    <div class="clear"><i class="fas fa-times"></i></div>
-    <div class="edit"><i class="fas fa-pencil-alt"></i></div>
+    <div class="clear" onclick="deleteItem(${index})"><i class="fas fa-times"></i></div>
+    <div class="edit" onclick="editItem(${index})"><i class="fas fa-pencil-alt"></i></div>
   </div>`)
   })
 }
@@ -35,4 +35,13 @@ function addTodo(event) {
   $('#title').val('');
   $('#desc').val('');
   populate();
+}
+function deleteItem(index) {
+  list.splice(index, 1);
+  console.log(list);
+  populate();
+  console.log(list);
+}
+function editItem(index) {
+  console.log('edit');
 }
