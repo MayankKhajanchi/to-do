@@ -43,5 +43,7 @@ function deleteItem(index) {
   console.log(list);
 }
 function editItem(index) {
-  console.log('edit');
-}
+  const edit = list[index];
+  $('.modal-body #title').val(edit.title);
+  $('.modal-body #desc').val(edit.description);
+};
