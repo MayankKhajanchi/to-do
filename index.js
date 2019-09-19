@@ -20,7 +20,7 @@ function populate() {
       </div>
     </div>
     <div class="clear" onclick="deleteItem(${index})"><i class="fas fa-times"></i></div>
-    <div class="edit" onclick="editItem(${index})"><i class="fas fa-pencil-alt"></i></div>
+    <div class="edit" onclick="editItem(${index})" data-toggle="modal" data-target="#editModal"><i class="fas fa-pencil-alt"></i></div>
   </div>`)
   })
 }
