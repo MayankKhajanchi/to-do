@@ -4,6 +4,9 @@ let list = [
   { title: 'we', description: 'save' },
   { title: 'planet', description: 'Earth !' },
 ];
+let editIndex;
+let oldValue = '';
+
 function populate() {
   $('.card-columns').empty();
   list.map((item, index) => {
@@ -21,6 +24,7 @@ function populate() {
   })
 }
 populate();
+
 function addTodo(event) {
   event.preventDefault();
   const todo = { title: '', description: '' };
@@ -39,12 +43,12 @@ function addTodo(event) {
   $('#desc').val('');
   populate();
 }
+
 function deleteItem(index) {
   list.splice(index, 1);
   populate();
 }
-let editIndex;
-let oldValue = '';
+
 function editItem(index) {
   oldValue = list[index].title;
   const edit = list[index];
