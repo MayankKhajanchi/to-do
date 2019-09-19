@@ -36,3 +36,27 @@ body {
 .card:hover .edit {
   display: block;
 }
+.card:hover {
+  box-shadow: 0px 5px 10px #c8c8c8;
+  transform: scale(1.01);
+}
+
+.card {
+  border: 1px solid lightgrey
+}
+
+.card {
+  max-height: 250px;
+  overflow: scroll;
+}
+
+@media only screen and (max-width: 576px) {
+  .card-columns {
+    column-count: 1;
+  }
+
+  .clear,
+  .edit {
+    display: block !important;
+  }
+}
