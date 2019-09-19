@@ -61,5 +61,7 @@ function saveEdited() {
     list[editIndex].description = $('.modal-body #desc').val();
     populate();
     $('#editModal').modal('hide');
+  } else {
+    $('#duplicacy').modal('show');
   }
 }
