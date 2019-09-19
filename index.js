@@ -33,7 +33,7 @@ function addTodo(event) {
   if (duplicacyCheck.indexOf(todo.title.toLowerCase()) != -1) {
     $('#duplicacy').modal('show');
   } else {
-    list.push(todo);
+    list.unshift(todo);
   }
   $('#title').val('');
   $('#desc').val('');
