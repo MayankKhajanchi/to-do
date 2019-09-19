@@ -43,7 +43,9 @@ function deleteItem(index) {
   console.log(list);
 }
 let editIndex;
+let oldValue = '';
 function editItem(index) {
+  oldValue = list[index].title;
   const edit = list[index];
   editIndex = index;
   $('.modal-body #title').val(edit.title);
@@ -52,8 +54,12 @@ function editItem(index) {
 
 function saveEdited() {
   event.preventDefault();
-  list[editIndex].title = $('.modal-body #title').val();
-  list[editIndex].description = $('.modal-body #desc').val();
-  populate();
-  $('#editModal').modal('hide');
+  let check = list.filter(item => item.title.toLowerCase() === $('.modal-body #title').val().toLowerCase() && item.title.toLowerCase() !== oldValue.toLowerCase());
+  console.log(check.length);
+  if (check.length == 0) {
+    list[editIndex].title = $('.modal-body #title').val();
+    list[editIndex].description = $('.modal-body #desc').val();
+    populate();
+    $('#editModal').modal('hide');
+  }
 }
