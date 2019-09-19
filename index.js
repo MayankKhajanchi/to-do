@@ -4,10 +4,6 @@ let list = [
   { title: 'we', description: 'save' },
   { title: 'planet', description: 'Earth !' },
 ];
-function addTodo() {
-  event.preventDefault();
-  console.log('hey')
-}
 function populate() {
   $('.card-columns').empty();
   list.map((item, index) => {
@@ -30,17 +26,22 @@ function addTodo(event) {
   const todo = { title: '', description: '' };
   todo.title = $('#title').val();
   todo.description = $('#desc').val();
-  console.log(todo);
-  list.push(todo);
+  let duplicacyCheck = [];
+  list.map((item) => {
+    duplicacyCheck.push(item.title.toLowerCase());
+  })
+  if (duplicacyCheck.indexOf(todo.title.toLowerCase()) != -1) {
+    $('#duplicacy').modal('show');
+  } else {
+    list.push(todo);
+  }
   $('#title').val('');
   $('#desc').val('');
   populate();
 }
 function deleteItem(index) {
   list.splice(index, 1);
-  console.log(list);
   populate();
-  console.log(list);
 }
 let editIndex;
 let oldValue = '';
@@ -55,7 +56,6 @@ function editItem(index) {
 function saveEdited() {
   event.preventDefault();
   let check = list.filter(item => item.title.toLowerCase() === $('.modal-body #title').val().toLowerCase() && item.title.toLowerCase() !== oldValue.toLowerCase());
-  console.log(check.length);
   if (check.length == 0) {
     list[editIndex].title = $('.modal-body #title').val();
     list[editIndex].description = $('.modal-body #desc').val();
