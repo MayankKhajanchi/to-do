@@ -49,6 +49,11 @@ body {
   max-height: 250px;
   overflow: scroll;
 }
+#duplicacy .modal-header{
+  background: red;
+  color: white;
+}
+
 
 @media only screen and (max-width: 576px) {
   .card-columns {

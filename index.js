@@ -7,9 +7,9 @@ let list = [
 let editIndex;
 let oldValue = '';
 
-function populate() {
+function populate(todoArray) {
   $('.card-columns').empty();
-  list.map((item, index) => {
+  todoArray.map((item, index) => {
     $('.card-columns').append(`<div class="card card1">
     <div class="content">
       <div class="card-body">
@@ -23,7 +23,7 @@ function populate() {
   </div>`)
   })
 }
-populate();
+populate(list);
 
 function addTodo(event) {
   event.preventDefault();
@@ -41,12 +41,12 @@ function addTodo(event) {
   }
   $('#title').val('');
   $('#desc').val('');
-  populate();
+  populate(list);
 }
 
 function deleteItem(index) {
   list.splice(index, 1);
-  populate();
+  populate(list);
 }
 
 function editItem(index) {
@@ -63,9 +63,49 @@ function saveEdited() {
   if (check.length == 0) {
     list[editIndex].title = $('.modal-body #title').val();
     list[editIndex].description = $('.modal-body #desc').val();
-    populate();
+    populate(list);
     $('#editModal').modal('hide');
   } else {
     $('#duplicacy').modal('show');
+  }
+}
+
+// function searchWord() {
+//   event.preventDefault();
+//   var match = [];
+//   const word = $('#search').val();
+//   console.log(word);
+//   list.map((item, index) => {
+//     if (item.title.split(” “).concat(item.description.split(” “)).includes(word)) {
+//       match.push(index);
+//     }
+//   })
+//   console.log(match);
+// }
+
+function searchWord(event) {
+  event.preventDefault();
+  if ($('#search').val().toLowerCase() == '') {
+    populate(list);
+  }
+  else {
+    var match = [];
+    const word = $('#search').val().toLowerCase();
+    console.log(word);
+    let matched = false;
+    list.map((item, index) => {
+      if (item.title.toLowerCase().split(" ").concat(item.description.toLowerCase().split(" ")).includes(word)) {
+        match.push(list[index]);
+        matched = true;
+      } else {
+        matched = false;
+      }
+    })
+    if (matched) {
+      populate(match);
+    }
+    else {
+      populate(list);
+    }
   }
 }
